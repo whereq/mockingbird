@@ -1,0 +1,363 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.whereq.common</groupId>
+	<artifactId>com.whereq.common</artifactId>
+	<version>2.2.4</version>
+	<packaging>pom</packaging>
+	<name>Core Parent POM</name>
+	<description>Parent module.</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.jackson>2.8.9</version.jackson>
+		<version.slf4j>1.7.25</version.slf4j>
+		<version.servlet>3.0.1</version.servlet>
+		<version.jose4j>0.5.5</version.jose4j>
+		<version.antlr>4.3</version.antlr>
+		<version.common-lang>2.6</version.common-lang>
+		<version.commons.io>2.4</version.commons.io>
+		<version.commons.codec>1.10</version.commons.codec>
+		<version.commons-text>1.5</version.commons-text>
+		<version.encoder>1.2.1</version.encoder>
+		<version.metrics>3.2.3</version.metrics>
+		<version.logback>1.2.3</version.logback>
+		<version.junit>4.12</version.junit>
+		<version.mockito>2.0.44-beta</version.mockito>
+		<version.hamcrest>1.3</version.hamcrest>
+		<version.jetty>7.1.6.v20100715</version.jetty>
+		<version.undertow>1.0.19.Final</version.undertow>
+		<version.jsonpath>2.1.0</version.jsonpath>
+		<version.httpclient>4.5.3</version.httpclient>
+		<version.httpasyncclient>4.1.1</version.httpasyncclient>
+		<version.commons-logging>1.0.4</version.commons-logging>
+		<version.xalan>2.7.2</version.xalan>
+<!-- 		<version.xmlsec>1.3.0</version.xmlsec> -->
+		<version.sts-client-api>1.1.1</version.sts-client-api>
+		<version.sts-client-common-utils>1.1.1</version.sts-client-common-utils>
+		<version.sts-client-pf-kerberos-token-translator>2.0.1</version.sts-client-pf-kerberos-token-translator>
+		<version.sts-client-open-token-translator>2.5.6</version.sts-client-open-token-translator>
+		<version.com.springsource.org.apache.commons.collections>3.2.2</version.com.springsource.org.apache.commons.collections>
+		<version.commons-beanutils>1.9.3</version.commons-beanutils>
+ 		<version.opensaml>3.1.1</version.opensaml>
+ 		<version.java-support>7.1.1</version.java-support>
+		<version.guava>25.0-android</version.guava>
+		<argLine>-Xmx512m -XX:MaxPermSize=256m</argLine>
+	</properties>
+
+	<modules>
+		<module>com.whereq.common.json.schemavalidator</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Modules in this project -->
+			<dependency>
+				<groupId>com.whereq.common</groupId>
+				<artifactId>com.whereq.common.json.schemavalidator</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+
+			<!-- External dependencies -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${version.servlet}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${version.jackson}</version>
+			</dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>${version.jackson}</version>
+            </dependency>   
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${version.slf4j}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-ext</artifactId>
+				<version>${version.slf4j}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.bitbucket.b_c</groupId>
+				<artifactId>jose4j</artifactId>
+				<version>${version.jose4j}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr4-runtime</artifactId>
+				<version>${version.antlr}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${version.common-lang}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${version.commons.io}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${version.commons.codec}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-text</artifactId>
+				<version>${version.commons-text}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.dropwizard.metrics</groupId>
+				<artifactId>metrics-core</artifactId>
+				<version>${version.metrics}</version>
+			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>io.dropwizard.metrics</groupId> -->
+<!-- 				<artifactId>metrics-graphite</artifactId> -->
+<!-- 				<version>${version.metrics}</version> -->
+<!-- 			</dependency> -->
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+				<artifactId>json-path</artifactId>
+				<version>${version.jsonpath}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${version.httpclient}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpasyncclient</artifactId>
+				<version>${version.httpasyncclient}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${version.commons-logging}</version>
+			</dependency>
+			<dependency>
+				<groupId>xalan</groupId>
+				<artifactId>xalan</artifactId>
+				<version>${version.xalan}</version>
+			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>xml-security</groupId> -->
+<!-- 				<artifactId>xmlsec</artifactId> -->
+<!-- 				<version>${version.xmlsec}</version> -->
+<!-- 			</dependency> -->
+			<dependency>
+				<groupId>com.pingidentity.sts</groupId>
+				<artifactId>sts-client-api</artifactId>
+				<version>${version.sts-client-api}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pingidentity.sts</groupId>
+				<artifactId>sts-client-common-utils</artifactId>
+				<version>${version.sts-client-common-utils}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pingidentity.sts</groupId>
+				<artifactId>sts-client-pf-kerberos-token-translator</artifactId>
+				<version>${version.sts-client-pf-kerberos-token-translator}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.pingidentity</groupId>
+				<artifactId>opentoken-agent</artifactId>
+				<version>${version.sts-client-open-token-translator}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${version.com.springsource.org.apache.commons.collections}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${version.commons-beanutils}</version>
+			</dependency>
+
+			<!-- Test dependencies -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${version.logback}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${version.junit}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${version.mockito}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>${version.hamcrest}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-server</artifactId>
+				<version>${version.jetty}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.undertow</groupId>
+				<artifactId>undertow-core</artifactId>
+				<version>${version.undertow}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>OCIONexus</id>
+			<name>Internal Releases</name>
+			<url>${nexus.server}/nexus/content/repositories/OCIO-Java-Releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>OCIONexus</id>
+			<name>Internal Snapshots</name>
+			<url>${nexus.server}/nexus/content/repositories/OCIO-Java-Snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<filtering>false</filtering>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>${basedir}/src/test/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</testResource>
+		</testResources>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.14</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.14</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+
+			<!-- JACOCO added for code coverage -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.4.201502262128</version>
+				<executions>
+					<execution>
+						<id>pre-unit-test</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<propertyName>surefireArgLine</propertyName>
+						</configuration>
+					</execution>
+					<execution>
+						<id>post-unit-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- end JACOCO -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-jar-plugin</artifactId>
+		        <configuration>
+        			<archive>
+        				<manifest>
+        					<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+        					<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+        				</manifest>
+        			</archive>
+        		</configuration>
+        	</plugin>
+
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.14</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+</project>
