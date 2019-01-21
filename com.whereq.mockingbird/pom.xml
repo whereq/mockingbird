@@ -68,19 +68,20 @@
 		<module>com.whereq.common.json.schemavalidator</module>
 	</modules>
 	
+	<!--
 	<distributionManagement>
 		<repository>
-			<id>OCIONexus</id>
+			<id>WhereQNexus</id>
 			<name>Internal Releases</name>
-			<url>${nexus.server}/nexus/content/repositories/OCIO-Java-Releases/</url>
+			<url>${nexus.server}/nexus/content/repositories/WhereQ-Java-Releases/</url>
 		</repository>
 		<snapshotRepository>
-			<id>OCIONexus</id>
+			<id>SnapShotNexus</id>
 			<name>Internal Snapshots</name>
-			<url>${nexus.server}/nexus/content/repositories/OCIO-Java-Snapshots/</url>
+			<url>${nexus.server}/nexus/content/repositories/WhereQ-Java-Snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
+	-->
 	<build>
 		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
