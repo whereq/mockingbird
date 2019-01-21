@@ -1,4 +1,3 @@
-
 package com.whereq.common.json.schema;
 
 import java.util.ArrayList;
@@ -10,24 +9,25 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class MinimumValidator extends BaseJsonValidator implements JsonValidator {
-	private static final Logger LOG = LoggerFactory.getLogger(MinimumValidator.class);
-	private static final String PROPERTY_EXCLUSIVE_MINIMUM = "exclusiveMinimum";
+public class MaximumValidator extends BaseJsonValidator implements JsonValidator {
+	private static final Logger LOG = LoggerFactory.getLogger(MaximumValidator.class);
+	private static final String PROPERTY_EXCLUSIVE_MAXIMUM = "exclusiveMaximum";
 
-	private double minimum;
-	private boolean excluded = false;
+	private double maximum;
+	private boolean excludeEqual = false;
 
-	public MinimumValidator(String schemaPath, JsonNode schemaNode, JsonSchema parentSchema, ObjectMapper mapper) {
-		super(schemaPath, schemaNode, parentSchema, ValidatorTypeCode.MINIMUM);
+	public MaximumValidator(String schemaPath, JsonNode schemaNode, JsonSchema parentSchema, ObjectMapper mapper) {
+
+		super(schemaPath, schemaNode, parentSchema, ValidatorTypeCode.MAXIMUM);
 		if (schemaNode.isNumber()) {
-			minimum = schemaNode.doubleValue();
+			maximum = schemaNode.doubleValue();
 		} else {
-			throw new JsonSchemaException("minimum value is not a number");
+			throw new JsonSchemaException("maximum value is not a number");
 		}
 
-		JsonNode exclusiveMinimumNode = getParentSchema().getSchemaNode().get(PROPERTY_EXCLUSIVE_MINIMUM);
-		if (exclusiveMinimumNode != null && exclusiveMinimumNode.isBoolean()) {
-			excluded = exclusiveMinimumNode.booleanValue();
+		JsonNode exclusiveMaximumNode = getParentSchema().getSchemaNode().get(PROPERTY_EXCLUSIVE_MAXIMUM);
+		if (exclusiveMaximumNode != null && exclusiveMaximumNode.isBoolean()) {
+			excludeEqual = exclusiveMaximumNode.booleanValue();
 		}
 
 		parseErrorCode(getValidatorType().getErrorCodeKey());
@@ -40,13 +40,13 @@ public class MinimumValidator extends BaseJsonValidator implements JsonValidator
 		List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
 
 		if (!node.isNumber()) {
-			// minimum only applies to numbers
+			// maximum only applies to numbers
 			return errors;
 		}
 
 		double value = node.doubleValue();
-		if (lessThan(value, minimum) || (excluded && equals(value, minimum))) {
-			errors.add(buildValidationMessage(at, "" + minimum));
+		if (greaterThan(value, maximum) || (excludeEqual && equals(value, maximum))) {
+			errors.add(buildValidationMessage(at, "" + maximum));
 		}
 		return errors;
 	}
