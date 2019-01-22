@@ -10,7 +10,7 @@
 	
 	
 	<properties>
-		<maven.test.skip>true</maven.test.skip>
+		<maven.test.skip>false</maven.test.skip>
 	
 		<java.version>1.8</java.version>
 		<whereq_code.version>0.1</whereq_code.version>
@@ -65,7 +65,7 @@
 	<modules>
 		<module>utils</module>
 		<module>mappers</module>
-		<module>com.whereq.common.json.schemavalidator</module>
+		<module>json-schemavalidator</module>
 	</modules>
 	
 	<!--

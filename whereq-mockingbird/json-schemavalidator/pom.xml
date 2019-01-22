@@ -8,7 +8,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>com.whereq.common.json.schemavalidator</artifactId>
+    <artifactId>whereq-mockingbird-json-schemavalidator</artifactId>
     <packaging>jar</packaging>
     <description>A sub module that validates json based on json schema</description>
 
